@@ -4,4 +4,4 @@ webhooks_path = "/webhooks/app/uninstalled"
 
 [commands]
 predev = ""
-dev = ""
+dev = "npm exec remix vite:dev"
