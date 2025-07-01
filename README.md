@@ -33,22 +33,16 @@ docker compose build
 docker compose up -d
 ```
 
-Using yarn:
+Connect to the docker container (app):
 
 ```shell
-yarn dev
+docker compose exec -it app sh
 ```
 
-Using npm:
+Start the app using npm:
 
 ```shell
 npm run dev
-```
-
-Using pnpm:
-
-```shell
-pnpm run dev
 ```
 
 Press P to open the URL to your app. Once you click install, you can start development.
