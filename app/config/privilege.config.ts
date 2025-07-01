@@ -1,31 +1,31 @@
+type AccessString = "read" | "write";
+
+type PrivilegeConfig = {
+  restrictions: Array<{
+    name: string;
+    type: "action" | "page";
+    required: Array<{
+      privilege: string;
+      access: AccessString[];
+    }>;
+  }>;
+};
+
 export const restrictedItem = {
-  action: {
-    fetchDashboard: "FETCH_DASHBOARD",
-  },
   page: {
-    dashboard: "DASHBOARD_PAGE",
+    home: "HOME_PAGE",
   },
 };
 
-export const privilegeConfig = {
+export const privilegeConfig: PrivilegeConfig = {
   restrictions: [
     {
-      name: restrictedItem.page.dashboard,
+      name: restrictedItem.page.home,
       type: "page",
       required: [
         {
-          privilege: "algolia.dashboard",
+          privilege: "template-app.home",
           access: ["read"],
-        },
-      ],
-    },
-    {
-      name: restrictedItem.action.fetchDashboard,
-      type: "action",
-      required: [
-        {
-          privilege: "algolia.dashboard",
-          access: ["write"],
         },
       ],
     },
