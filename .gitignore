@@ -22,5 +22,4 @@ pnpm-lock.yaml
 .shopify/*
 .shopify.lock
 
-shopify.app.toml
 !shopify.app.*.toml
