@@ -5,9 +5,9 @@ import {
   PRIVILEGE_USER_DATA_KEY,
   PRIVILEGE_USER_DATA_HASH_KEY_PREFIX,
   HASH_CHECK_INTERVAL,
-} from "../components/constant";
+} from "../constants/privileges";
 import PrivilegeScreen from "../components/PrivilegeScreen";
-import { useInterval } from "../helpers/useInterval";
+import { useInterval } from "../hooks/useInterval";
 
 const { AES, enc } = pkg;
 

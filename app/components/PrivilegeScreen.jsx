@@ -4,7 +4,7 @@ import { TitleBar } from "@shopify/app-bridge-react";
 import { LegacyCard, LegacyStack, Page, Spinner, Text } from "@shopify/polaris";
 
 import PrivilegeIllustration from "../assets/images/privilege.svg";
-import { PRIVILEGE_USER_DATA_KEY } from "../components/constant";
+import { PRIVILEGE_USER_DATA_KEY } from "../constants/privileges";
 
 const PrivilegeScreen = ({ setPrivilegeSession, callback, noPrivileges }) => {
   const [isLoading, setIsLoading] = useState(true);

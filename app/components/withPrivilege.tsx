@@ -3,7 +3,7 @@ import { LegacyCard, LegacyStack, Page, Text } from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
 import { useOutletContext } from "@remix-run/react";
 import PrivilegeIllustration from "../assets/images/privilege.svg";
-import { privilegeConfig } from "../constants/privilege.config";
+import { privilegeConfig } from "../config/privilege.config";
 
 const PageUnavailable = () => {
   return (
@@ -31,12 +31,19 @@ const PageUnavailable = () => {
   );
 };
 
+type PrivilegeData = {
+  privileges: Array<{
+    privilege: string[];
+    read: string;
+  }>;
+};
+
 const withPrivilege = <P extends object>(
   restrictionName: string,
   WrappedComponent: React.ComponentType<P>,
 ) => {
   return (props: P) => {
-    const privilegesData = useOutletContext();
+    const privilegesData = useOutletContext<PrivilegeData>();
     const [hasAccess, setHasAccess] = useState(false);
 
     useEffect(() => {
@@ -46,8 +53,10 @@ const withPrivilege = <P extends object>(
         (restriction) => restriction.name === restrictionName,
       );
 
+      if (!accessName) return setHasAccess(false);
+
       const userPrivilegeAccess = accesses.find((access) =>
-        access.privilege.includes(accessName.required[0].privilege),
+        access.privilege.includes(accessName?.required[0].privilege),
       );
 
       if (!userPrivilegeAccess) return setHasAccess(false);
